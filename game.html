@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="he">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>משחק חיבור וחיסור</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>משחק חיבור וחיסור עד 100</h1>
+        <p id="textExercise">השלם:</p> <!-- הצגת הטקסט -->
+        <p id="numberExercise">המספרים יוצגו כאן</p> <!-- הצגת התרגיל (המספרים) -->
+        <input type="number" id="userAnswer" placeholder="הכנס את התשובה שלך">
+        <button onclick="checkAnswer()">בדוק תשובה</button>
+        <p id="result"></p> <!-- הצגת התוצאה -->
+        <p id="score">ניקוד: 0</p> <!-- הצגת הניקוד -->
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>

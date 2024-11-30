@@ -1,0 +1,68 @@
+body {
+    font-family: Arial, sans-serif;
+    direction: rtl; /* הדף יהיה מימין לשמאל */
+    text-align: center;
+    background-color: #f4f4f9;
+    padding: 50px;
+    margin: 0;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.container {
+    max-width: 400px;
+    padding: 20px;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+h1 {
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+input {
+    padding: 10px;
+    font-size: 18px;
+    margin-top: 10px;
+    width: 60%;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+button {
+    padding: 10px 20px;
+    margin-top: 10px;
+    font-size: 18px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    background-color: #4CAF50;
+    color: white;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #45a049;
+}
+
+#result {
+    margin-top: 20px;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+#textExercise {
+    direction: rtl; /* הצגת הטקסט בעברית */
+    font-size: 20px;
+    margin-bottom: 10px;
+}
+
+#numberExercise {
+    direction: ltr; /* הצגת המספרים משמאל לימין */
+    font-size: 20px;
+    margin-bottom: 10px;
+}
