@@ -1,43 +1,48 @@
 body {
     font-family: Arial, sans-serif;
-    direction: rtl; /* הדף יהיה מימין לשמאל */
+    direction: rtl;
     text-align: center;
     background-color: #f4f4f9;
     padding: 50px;
     margin: 0;
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    display: block;
 }
 
 .container {
     max-width: 400px;
     padding: 20px;
-    background-color: white;
+    background-color: rgb(226, 241, 246);
+    background-image: url("bubble-background.png");
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     text-align: center;
+    margin: auto;
 }
-
 h1 {
-    font-size: 24px;
+    font-size: 44px;
     margin-bottom: 20px;
+    text-align: center; 
+    width: 100%;
+    color: #810485;
 }
 
 input {
     padding: 10px;
-    font-size: 18px;
+    font-size: 22px;
     margin-top: 10px;
     width: 60%;
     border-radius: 5px;
     border: 1px solid #ccc;
+    text-align: center; 
 }
 
 button {
     padding: 10px 20px;
     margin-top: 10px;
-    font-size: 18px;
+    font-size: 22px;
     border-radius: 5px;
     border: 1px solid #ccc;
     background-color: #4CAF50;
@@ -51,18 +56,37 @@ button:hover {
 
 #result {
     margin-top: 20px;
-    font-size: 18px;
+    font-size: 22px;
     font-weight: bold;
+    min-height: 30px;
 }
 
 #textExercise {
     direction: rtl; /* הצגת הטקסט בעברית */
-    font-size: 20px;
+    font-size: 32px;
     margin-bottom: 10px;
 }
 
 #numberExercise {
     direction: ltr; /* הצגת המספרים משמאל לימין */
-    font-size: 20px;
+    font-size: 32px;
     margin-bottom: 10px;
+}
+
+#score {
+    margin-top: 20px;
+    font-size: 32px;
+    color: rgb(4, 75, 4)
+}
+
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
 }

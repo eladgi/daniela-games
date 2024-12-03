@@ -7,11 +7,13 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <audio id="successSound" src="success.mp3"></audio>
+    <audio id="failureSound" src="failure.mp3"></audio>
+    <h1>משחק חיבור וחיסור עד 100</h1>
     <div class="container">
-        <h1>משחק חיבור וחיסור עד 100</h1>
         <p id="textExercise">השלם:</p> <!-- הצגת הטקסט -->
         <p id="numberExercise">המספרים יוצגו כאן</p> <!-- הצגת התרגיל (המספרים) -->
-        <input type="number" id="userAnswer" placeholder="הכנס את התשובה שלך">
+        <p><input type="number" id="userAnswer" placeholder="הכנס את התשובה שלך" min="0" max="100"></p>
         <button onclick="checkAnswer()">בדוק תשובה</button>
         <p id="result"></p> <!-- הצגת התוצאה -->
         <p id="score">ניקוד: 0</p> <!-- הצגת הניקוד -->
