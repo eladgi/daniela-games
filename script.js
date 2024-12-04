@@ -1,36 +1,35 @@
 let correctAnswer = 0;
-let score = 0;  // משתנה לניקוד
+let score = 0;
+let revealedParts = 0;
+const puzzleParts = 9; // מספר חלקי הפאזל
+const puzzleContainer = document.getElementById('puzzleContainer'); // אלמנט המכיל את הפאזל
+const puzzleImage = document.getElementById('puzzleImage'); // התמונה המקורית
 
 function generateExercise() {
-    // ייצור תרגיל אקראי
     document.getElementById("userAnswer").value = ""
-    const isAddition = Math.random() > 0.5; // חיבור או חיסור
+    const isAddition = Math.random() > 0.5;
 
     let num1, num2, exercise;
 
     if (isAddition) {
-        // חיבור, סכום עד 100
-        num1 = Math.floor(Math.random() * 101); // מספר בין 0 ל-100
-        num2 = Math.floor(Math.random() * (101 - num1)); // מספר כך שסכום השניים לא יעלה על 100
+        num1 = Math.floor(Math.random() * 101);
+        num2 = Math.floor(Math.random() * (101 - num1));
         exercise = `${num1} + ${num2}`;
         correctAnswer = num1 + num2;
     } else {
-        // חיסור, תמיד תוצאה חיובית
-        num1 = Math.floor(Math.random() * 101); // מספר בין 0 ל-100
-        num2 = Math.floor(Math.random() * (num1 + 1)); // מספר כך שהתוצאה תהיה חיובית
+        num1 = Math.floor(Math.random() * 101);
+        num2 = Math.floor(Math.random() * (num1 + 1));
         exercise = `${num1} - ${num2}`;
         correctAnswer = num1 - num2;
     }
 
-    // הצגת התרגיל במסך
     document.getElementById("textExercise").textContent = "השלם:";
-    document.getElementById("numberExercise").textContent = exercise; // הצגת המספרים
+    document.getElementById("numberExercise").textContent = exercise;
     document.getElementById("result").textContent = '';
     document.getElementById("userAnswer").value = '';
-    document.getElementById("score").textContent = `ניקוד: ${score}`;  // הצגת הניקוד
+    document.getElementById("score").textContent = `ניקוד: ${score}`;
 }
 
-// פונקציה לבדוק את התשובה
 function checkAnswer() {
     const userAnswer = parseInt(document.getElementById("userAnswer").value);
     if (isNaN(userAnswer) || userAnswer < 0 || userAnswer > 100) {
@@ -44,26 +43,58 @@ function checkAnswer() {
     const failureSound = document.getElementById("failureSound");
 
     if (userAnswer === correctAnswer) {
-        score++;  // הגדלת הניקוד
+        score++;
         document.getElementById("result").textContent = "תשובה נכונה!";
         document.getElementById("result").style.color = "green";
-        successSound.play(); // נגינת צליל הצלחה
+        successSound.play();
         setTimeout(() => {
-            generateExercise(); // יצירת תרגיל חדש אחרי 1.5 שניות
+            generateExercise();
+            revealPuzzlePart();
         }, 1500);
     } else {
         document.getElementById("result").textContent = userAnswer + " היא לא התשובה הנכונה, נסה שוב.";
         document.getElementById("result").style.color = "darkred";
-        failureSound.play(); // נגינת צליל כישלון
+        failureSound.play();
         document.getElementById("userAnswer").value = ""
     }
     document.getElementById("userAnswer").focus();
 }
 
-// יצירת תרגיל ראשון
-generateExercise();
+function revealPuzzlePart() {
+    if (revealedParts === puzzleParts) {
+        revealedParts = 0;
+        resetPuzzle();
+    }
+    revealedParts++;
+    if (revealedParts <= puzzleParts) {
+        let partSize = 100; // גודל כל חלק בפאזל
+        let row = Math.floor((revealedParts - 1) / 3); // שורה של החלק הנוכחי
+        let col = (revealedParts - 1) % 3; // עמודה של החלק הנוכחי
+        let newPart = document.createElement('div'); // יצירת אלמנט div חדש עבור חלק הפאזל
+        newPart.classList.add('puzzlePart'); // הוספת קלאס לאלמנט
+        newPart.style.left = col * partSize + 'px'; // מיקום אופקי של החלק
+        newPart.style.top = row * partSize + 'px'; // מיקום אנכי של החלק
+        newPart.style.backgroundImage = `url(${puzzleImage.src})`; // רקע החלק הוא התמונה המקורית
+        newPart.style.backgroundPosition = `-${col * partSize}px -${row * partSize}px`; // הזזת הרקע כדי להציג את החלק הנכון
+        newPart.style.visibility = 'visible'; // הפיכת החלק לנראה
+        puzzleContainer.appendChild(newPart); // הוספת החלק לאלמנט המכיל את הפאזל
+    }
+}
 
-// הוספת האזנה ללחיצת מקש "Enter" בתיבת הטקסט
+function resetPuzzle() {
+    // הסרת כל חלקי הפאזל מהאלמנט המכיל אותם
+    while (puzzleContainer.firstChild) {
+        puzzleContainer.removeChild(puzzleContainer.firstChild);
+    }
+}
+
+function initGame() {
+    generateExercise();
+    resetPuzzle();
+}
+
+initGame();
+
 document.getElementById("userAnswer").addEventListener("keypress", function(event) {
     if (event.key === "Enter") {
         checkAnswer();

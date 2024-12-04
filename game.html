@@ -11,12 +11,15 @@
     <audio id="failureSound" src="failure.mp3"></audio>
     <h1>משחק חיבור וחיסור עד 100</h1>
     <div class="container">
-        <p id="textExercise">השלם:</p> <!-- הצגת הטקסט -->
-        <p id="numberExercise">המספרים יוצגו כאן</p> <!-- הצגת התרגיל (המספרים) -->
+        <p id="textExercise">השלם:</p>
+        <p id="numberExercise">המספרים יוצגו כאן</p>
         <p><input type="number" id="userAnswer" placeholder="הכנס את התשובה שלך" min="0" max="100"></p>
         <button onclick="checkAnswer()">בדוק תשובה</button>
-        <p id="result"></p> <!-- הצגת התוצאה -->
-        <p id="score">ניקוד: 0</p> <!-- הצגת הניקוד -->
+        <p id="result"></p>
+        <p id="score">ניקוד: 0</p>
+    </div>
+    <div id="puzzleContainer">
+        <img id="puzzleImage" src="images/student.webp" alt="Puzzle" style="width: 300px; height: 300px; position: relative; overflow: hidden;">
     </div>
     <script src="script.js"></script>
 </body>

@@ -12,7 +12,7 @@ body {
     max-width: 400px;
     padding: 20px;
     background-color: rgb(226, 241, 246);
-    background-image: url("bubble-background.png");
+    background-image: url("images/bubble-background.png");
     background-position: center;
     background-size: contain;
     background-repeat: no-repeat;
@@ -89,4 +89,22 @@ input::-webkit-inner-spin-button {
 /* Firefox */
 input[type=number] {
   -moz-appearance: textfield;
+}
+
+#puzzleContainer {
+    width: 300px;  /* רוחב הפאזל */
+    height: 300px; /* גובה הפאזל */
+    position: relative; /* נאפשר מיקום אבסולוטי לחלקי הפאזל */
+    overflow: hidden; /* נחתוך חלקים שיוצאים מגבולות הפאזל */
+    margin: auto;    
+    border: 2px solid darkblue;
+}
+
+.puzzlePart {
+    position: absolute; /* מיקום אבסולוטי לחלקי הפאזל */
+    width: 100px; /* רוחב כל חלק */
+    height: 100px; /* גובה כל חלק */
+    background-size: 300px 300px; /* התאמת גודל התמונה לרקע */
+    background-repeat: no-repeat;
+    visibility: hidden; /* בהתחלה כל החלקים מוסתרים */
 }
